@@ -1,5 +1,3 @@
-//ci.yml
-
 name: Docker CI and Security Scan
 
 on:
@@ -9,10 +7,9 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
     steps:
-    - name: 체크아웃 소스코드
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
     - name: 도커 이미지 빌드
       run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/my-app:${{ github.sha }} .
